@@ -1,0 +1,24 @@
+{
+    "traits": [
+        {
+            "trait_type": "Collection",
+            "value": "BEFEDA"
+        },
+        {
+            "trait_type": "Issuer",
+            "value": "Altimetrik Uruguay"
+        },
+        {
+        "trait_type": "Created by",
+        "value": "Alvaro Manganello"
+        },
+        {
+        "trait_type": "Owner",
+        "value": "Franco Erramouspe"
+        }
+    ],
+    "description": "This NFT certifies that Franco Erramouspe successfully completed the Altimetrik Uruguay Frontend Developer internship on November 25, 2021. This practice was developed within the framework of the 1st Frontend Bootcamp carried out by Altimetrik, which had more than 40 participants from all over Uruguay.",
+    "image": "https://ipfs.io/ipfs/QmPuZXVyAMEZ1Z9HTkTKspZ2so8draynvLF12zwZkPWJNx",
+    "name": "Altimetrik's Internship Certificate"
+}
+  

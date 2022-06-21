@@ -7,8 +7,8 @@ const validator = require('../scripts/ipfsHelper.js');
 
 describe("validator storeDataToFile()", () => {
 
-    it("should return true for artCollectible contracts file", async () => {
-        const filePath = path.join(__dirname, '../contracts/ArtCollectible.sol');
+    it("should return true for artCertificate contracts file", async () => {
+        const filePath = path.join(__dirname, '../contracts/artCertificate.sol');
         const result = await validator.fileExists(filePath);
         expect(result).to.be.true;
     })

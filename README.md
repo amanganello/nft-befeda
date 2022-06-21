@@ -3,25 +3,9 @@
 This project creates a smart contract and then deploys it to Rinkeby public testnet and Polygon mainnet.  
 NFT's can then be minted by sending transaction to the deployed smart contract.
 
-Find out the NFT on Opensea minted on Polygon mainnet:
-
-https://opensea.io/assets/matic/0x488049efd0a92f71046a62fcf994c8f990a1b87d/1
-
-Find the NFT's on Opensea testnet:
-
-https://testnets.opensea.io/assets/0x1e9930Bc5f39dE0515BeC52612bc4510F7B236C0/1
-
-https://testnets.opensea.io/assets/0xD6c24c9A49271bFe5a04B00363EB521a02768bA1/1
-
-<img width="1332" alt="Screenshot 2021-09-05 at 8 44 23 PM" src="https://user-images.githubusercontent.com/4893002/132132564-b0fb8524-3035-4e61-85db-17e5fda1fad6.png">
-
-## Follow the Youtube tutorial here:
-
-[![MINT NFT TUTORIAL](https://img.youtube.com/vi/axdymRYSHTs/0.jpg)](https://www.youtube.com/watch?v=axdymRYSHTs)
-
 ### Dependencies:
 
-- `NodeJS`  
+- `NodeJS`
   https://nodejs.org/en/download/
 - `Ganache UI`  
   https://www.trufflesuite.com/ganache
@@ -40,8 +24,8 @@ https://testnets.opensea.io/assets/0xD6c24c9A49271bFe5a04B00363EB521a02768bA1/1
    Note down The API Key and API Key Secret and update in .env file.
 
 4. Update the name of your image file in `assets` folder.  
-   Update `filePath` with your image filepath.  
-   Run `node scripts/runScript` command.  
+   Update `filePath` with your image filepath.
+   Run `node scripts/runScript` command.
    This will call Pinata API's and will upload file to IPFS and a new file will be created in `data` folder `ipfsHash.json` and the
    Pinata response containing the `ipfsHash` will be populated in that file.
 
@@ -50,31 +34,29 @@ https://testnets.opensea.io/assets/0xD6c24c9A49271bFe5a04B00363EB521a02768bA1/1
    Again Run `node scripts/runScript` command.
    This will call Pinata API's and will upload metadata file to IPFS and the Pinata response containing the `ipfsHash` will be again populated in `ipfsHash.json` file.
 
-6. Install latest solidity version by running `npm install solc` and Dont forget to update this solidity version in truffle-config.
+6. Install latest solidity version by running `npm install solc` and Don't forget to update this solidity version in truffle-config.
 
-7. Update Rinkeby test network details in `truffle-config.js` .  
-   Update your account mnemonic in `.env` file.  
-   Now run `truffle console --network rinkeby` to connect to Rinkeby Public test network.  
-   Run `migrate` command to deploy the contract on Rinkeby testnet.  
-   Run `let art = await ArtCollectible.deployed()`.  
-   Run `await art.claimItem('https://ipfs.io/ipfs/QmREBUVuoeX39eB9KiQjp25RFr2dhYF6zawpYXq1UPJXEz')`  
+7. Update Mumbai test network details in `truffle-config.js`.
+   Update your account mnemonic in `.env` file.
+   Now run `truffle console --network mumbai` to connect to Mumbai Public test network.  
+   Run `migrate` command to deploy the contract on Mumbai testnet.  
+   Run `let certificate = await ArtCertificate.deployed()`.  
+   Run `await certificate.claimItem('https://ipfs.io/ipfs/IPFS_HASH_TO_METADATA')`  
    Pass the correct metadata file IPFS address to claimItem.  
-   Run `art.address` to get contract address.
+   Run `certificate.address` to get contract address.
 
 8. Checkout your NFT on
    `https://testnets.opensea.io/assets/contract_address/tokenId`.  
     You can also verify your metadata using on https://rinkeby-api.opensea.io/asset/contract_address/tokenId/validate  
     eg: https://rinkeby-api.opensea.io/asset/0x1e9930Bc5f39dE0515BeC52612bc4510F7B236C0/1/validate
 
-9. To deploy your NFT on polygon mainnet  
+9. To deploy your NFT on polygon mainnet
    Update MNEMONIC of your MATIC funded Metamask account in .env file.   
    Run `npx truffle migrate --network matic`
    This will deploy your contract to polygon mainnet.    
    Copy the deployed contract address and update it in .env file.  
    Pass your metadata file tokenURI in cliamItem in mintNft.js.   
-   run `node scripts/mintNft.js`  
+   run `node scripts/mintNft.js`
 
 10. Checkout your NFT on
     `https://opensea.io/assets/matic/contract_address/tokenId`
-
-Party!!🥳🥳

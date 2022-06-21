@@ -1,0 +1,24 @@
+{
+    "traits": [
+        {
+            "trait_type": "Collection",
+            "value": "BEFEDA"
+        },
+        {
+            "trait_type": "Issuer",
+            "value": "Altimetrik Uruguay"
+        },
+        {
+        "trait_type": "Created by",
+        "value": "Alvaro Manganello"
+        },
+        {
+        "trait_type": "Owner",
+        "value": "Daniela de la Sierra"
+        }
+    ],
+    "description": "This NFT certifies that Daniela de la Sierra successfully completed the Altimetrik Uruguay Frontend Developer internship on November 25, 2021. This practice was developed within the framework of the 1st Frontend Bootcamp carried out by Altimetrik, which had more than 40 participants from all over Uruguay.",
+    "image": "https://ipfs.io/ipfs/QmaTh4L23XLnVif64qJVxhoXJRBbHGQGpHF7R4weyRTCbZ",
+    "name": "Altimetrik's Internship Certificate"
+}
+  

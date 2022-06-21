@@ -23,7 +23,14 @@ require('dotenv').config()
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const mnemonic = process.env.MNEMONIC
-const clientURL = process.env.CLIENT_URL
+const clientURL = (network) => {
+  if (network === "rinkeby")
+    return process.env.CLIENT_URL_RINKEBY;
+  if (network === "mumbai")
+    return process.env.CLIENT_URL_MUMBAI;
+  if (network === "matic")
+    return process.env.CLIENT_URL_MATIC;
+}
 
 module.exports = {
   /**
@@ -48,33 +55,8 @@ module.exports = {
       port: 7545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
     },
-    // Another network with more advanced options...
-    // advanced: {
-    // port: 8777,             // Custom port
-    // network_id: 1342,       // Custom network
-    // gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
-    // gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
-    // from: <address>,        // Account to send txs from (default: accounts[0])
-    // websocket: true        // Enable EventEmitter interface for web3 (default: false)
-    // },
-    // Useful for deploying to a public network.
-    // NB: It's important to wrap the provider as a function.
-    // ropsten: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
-    // network_id: 3,       // Ropsten's id
-    // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-    // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-    // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-    // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
-    // Useful for private networks
-    // private: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
-    // network_id: 2111,   // This network is yours, in the cloud.
-    // production: true    // Treats this network as if it was a public net. (default: false)
-    // }
     rinkeby: {
-      provider: () => new HDWalletProvider(mnemonic, clientURL),
+      provider: () => new HDWalletProvider(mnemonic, clientURL("rinkeby")),
       network_id: 4,       // Rinkeby's id
       gas: 3000000,
       gasPrice: 40000000000, // 40 gwei
@@ -83,14 +65,23 @@ module.exports = {
       skipDryRun: true,   // Skip dry run before migrations? (default: false for public nets )
       networkCheckTimeout: 10000000,
     },
+    mumbai: {
+      provider: () => new HDWalletProvider({mnemonic: mnemonic, providerOrUrl: clientURL("mumbai")} ),
+      network_id: 80001,       // Mumbai's id
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: true,   // Skip dry run before migrations? (default: false for public nets )
+      from: "0xEB813E76a1EA79A10aC7961C8Cb0a80DBf84c39F",
+    },
     matic: {
-      provider: () => new HDWalletProvider(mnemonic, clientURL),
-      network_id: 137,
+      provider: () => new HDWalletProvider(mnemonic, clientURL("matic")),
+      network_id: 137, // Matic's id
       confirmations: 2,
       timeoutBlocks: 200,
       skipDryRun: true,
       gas: 8500000,
       gasPrice:40000000000, // 40 gwei
+      from: "0xEB813E76a1EA79A10aC7961C8Cb0a80DBf84c39F",
     },
   },
 
@@ -102,7 +93,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.8.7",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.8.14",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {
