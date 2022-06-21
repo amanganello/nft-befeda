@@ -1,13 +1,13 @@
 {
-  "name": "nft-demo",
+  "name": "nft-creation",
   "version": "1.0.0",
-  "description": "",
+  "description": "NFT creation for BEFEDA certificates",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alvaro Manganello",
   "license": "ISC",
   "dependencies": {
     "@openzeppelin/contracts": "^4.3.1",
